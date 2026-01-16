@@ -72,8 +72,8 @@ const ProductShowcase = () => {
         <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full">
             <div ref={containerRef} className="flex h-screen w-max items-center">
                 {products.map((product, index) => (
-                    <div key={index} className={`h-screen w-screen flex-shrink-0 relative flex items-center justify-center item-trigger-${index}`}>
-                        <div className="container mx-auto px-6 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden`}>
+                        <div className="container mx-auto px-6 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
 
                             <div className={`item-text-${index} space-y-4 md:space-y-8 max-w-xl order-2 md:order-1`}>
                                 <div className="flex items-center gap-4 text-gold-accent/60">
@@ -86,7 +86,7 @@ const ProductShowcase = () => {
                                     {product.title}
                                 </h2>
 
-                                <p className="text-base md:text-lg text-white/40 leading-relaxed font-light">
+                                <p className="text-base md:text-lg text-white/40 leading-relaxed font-light line-clamp-4 md:line-clamp-none">
                                     {product.description}
                                 </p>
 
@@ -100,8 +100,8 @@ const ProductShowcase = () => {
                                 </div>
                             </div>
 
-                            <div className="relative order-1 md:order-2">
-                                <div className="aspect-[1/1] sm:aspect-[4/5] w-full max-w-[400px] mx-auto bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
+                            <div className="relative order-1 md:order-2 w-full flex justify-center">
+                                <div className="aspect-[1/1] sm:aspect-[4/5] w-full max-w-[320px] sm:max-w-[400px] bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
                                     <img
                                         src={product.image}
                                         className="w-full h-full object-cover transition-all duration-1000 ease-out md:group-hover:scale-110 md:group-hover:rotate-1"

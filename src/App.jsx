@@ -63,21 +63,21 @@ function App() {
 
       <main className="relative w-full">
         {isLoaded ? (
-          <>
+          <div className="relative w-full">
             <Navbar />
 
-            {/* 1. Sticky Background Layer: stays fixed at the top */}
+            {/* 1. Sticky Background Layer */}
             <div className="sticky top-0 h-screen w-full z-0 overflow-hidden">
               <Hero images={loadedImages} />
             </div>
 
             {/* 2. Overlay Content Layer: slides UP over the background */}
-            <div className="relative z-10 -mt-[100vh]">
+            <div className="relative z-10 -mt-[100vh] w-full">
               {/* This spacer provides the 'Intro' duration. 
                   Starts at scroll 0 because of the negative margin on parent. */}
-              <div id="hero-trigger" className="h-[200vh] w-full pointer-events-none" />
+              <div id="hero-trigger" className="h-[150vh] w-full pointer-events-none" />
 
-              <div className="relative bg-black border-t border-white/5 shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
+              <div className="relative bg-black border-t border-white/5 shadow-[0_-50px_100px_rgba(0,0,0,0.5)] w-full overflow-hidden">
                 <Philosophy />
                 <ProductShowcase />
                 <Story />
@@ -88,7 +88,7 @@ function App() {
                 <p className="tracking-[0.3em] uppercase opacity-50">&copy; 2026 AL RAZI. CRAFTED WITH FIRE.</p>
               </footer>
             </div>
-          </>
+          </div>
         ) : null}
       </main>
     </div>

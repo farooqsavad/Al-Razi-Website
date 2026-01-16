@@ -11,9 +11,10 @@ export default function Story() {
         const ctx = gsap.context(() => {
             // Horizontal Slide-in for the title container only
             gsap.fromTo('.story-title-container',
-                { x: '100%' },
+                { x: window.innerWidth > 768 ? '100%' : '30%', opacity: window.innerWidth > 768 ? 1 : 0 },
                 {
                     x: '0%',
+                    opacity: 1,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
@@ -27,9 +28,10 @@ export default function Story() {
 
             // Horizontal Slide-in for the content container
             gsap.fromTo('.story-content',
-                { x: '100%' },
+                { x: window.innerWidth > 768 ? '100%' : '30%', opacity: window.innerWidth > 768 ? 1 : 0 },
                 {
                     x: '0%',
+                    opacity: 1,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
@@ -75,7 +77,7 @@ export default function Story() {
     }, [])
 
     return (
-        <section id="origin" ref={sectionRef} className="relative min-h-[300vh] bg-black text-white flex flex-col md:flex-row border-t border-white/5 z-10">
+        <section id="origin" ref={sectionRef} className="relative min-h-[300vh] bg-black text-white flex flex-col md:flex-row border-t border-white/5 z-10 overflow-hidden">
             {/* Left Side: Sticky Brand Title */}
             <div className="w-full md:w-1/2 h-screen flex items-center justify-center story-title-container bg-black z-20">
                 <div className="text-left px-8 sm:px-12 md:px-24 w-full">
