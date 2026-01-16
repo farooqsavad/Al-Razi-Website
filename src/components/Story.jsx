@@ -46,30 +46,33 @@ export default function Story() {
             const paragraphs = gsap.utils.toArray('.story-text')
 
             paragraphs.forEach((p) => {
+                const isMobile = window.innerWidth <= 768
                 gsap.fromTo(p,
-                    { opacity: window.innerWidth > 768 ? 0.05 : 0.4, y: 30 },
+                    { opacity: isMobile ? 0.7 : 0.05, y: isMobile ? 20 : 30 },
                     {
                         opacity: 1,
                         y: 0,
-                        duration: 1.5,
+                        duration: isMobile ? 1 : 1.5,
                         scrollTrigger: {
                             trigger: p,
-                            start: 'top 90%',
-                            end: 'top 50%',
+                            start: isMobile ? 'top 85%' : 'top 90%',
+                            end: isMobile ? 'top 60%' : 'top 50%',
                             scrub: true,
                         }
                     }
                 )
             })
 
-            // Pinning the side heading - pin it after slide-in completes
-            ScrollTrigger.create({
-                trigger: sectionRef.current,
-                start: 'top top',
-                end: 'bottom bottom',
-                pin: '.story-title-container',
-                pinSpacing: false
-            })
+            // Pinning the side heading - pin it after slide-in completes (desktop only)
+            if (window.innerWidth > 768) {
+                ScrollTrigger.create({
+                    trigger: sectionRef.current,
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    pin: '.story-title-container',
+                    pinSpacing: false
+                })
+            }
 
         }, sectionRef)
 
