@@ -55,7 +55,7 @@ export default function Hero({ images }) {
                     rh = ch
                 }
                 // Apply zoom factor to make the mandi more prominent
-                const zoomFactor = 1.15
+                const zoomFactor = 0.75
                 rw *= zoomFactor
                 rh *= zoomFactor
             }
