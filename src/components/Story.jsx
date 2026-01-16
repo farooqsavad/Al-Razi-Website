@@ -26,16 +26,16 @@ export default function Story() {
                 }
             )
 
-            // Horizontal Slide-in for the content container
+            // Horizontal Slide-in for the content container - Disable on mobile to prevent cropping
             gsap.fromTo('.story-content',
-                { x: window.innerWidth > 768 ? '100%' : '30%', opacity: window.innerWidth > 768 ? 1 : 0 },
+                { x: window.innerWidth > 768 ? '100%' : '0%', opacity: window.innerWidth > 768 ? 1 : 0 },
                 {
                     x: '0%',
                     opacity: 1,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: 'top bottom',
+                        start: 'top 80%',
                         end: 'top top',
                         scrub: true,
                         invalidateOnRefresh: true,

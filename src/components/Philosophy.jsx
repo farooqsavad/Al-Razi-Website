@@ -62,9 +62,9 @@ export default function Philosophy() {
             {/* Background Ambience */}
             <div className="philo-bg absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-gold-accent)_0%,_transparent_70%)] opacity-10 z-0" />
 
-            <div className="relative z-10 text-center max-w-5xl px-8">
+            <div className="relative z-10 text-center max-w-5xl px-6 sm:px-8 py-20 md:py-0">
                 <h2 className="perspective-[1000px] overflow-hidden">
-                    <div className="text-5xl sm:text-7xl md:text-9xl font-bold text-white leading-[0.85] tracking-tight font-display mb-8 md:mb-12">
+                    <div className="text-4xl sm:text-7xl md:text-9xl font-bold text-white leading-[0.85] tracking-tight font-display mb-8 md:mb-12">
                         <span className="philo-word inline-block">TASTE</span><br />
                         <span className="philo-word inline-block italic text-gold-accent">THE</span><br />
                         <span className="philo-word inline-block">LEGACY</span>
@@ -73,7 +73,7 @@ export default function Philosophy() {
 
                 <div className="philo-sub mt-4 max-w-xl mx-auto">
                     <div className="h-[1px] w-12 bg-gold-accent/40 mx-auto mb-6 md:mb-8" />
-                    <p className="text-lg sm:text-xl md:text-2xl text-white/60 font-light leading-relaxed px-4">
+                    <p className="text-base sm:text-xl md:text-2xl text-white/60 font-light leading-relaxed px-4">
                         Where ancient nomadic traditions meet the precision of modern culinary mastery.
                     </p>
                 </div>

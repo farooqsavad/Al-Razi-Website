@@ -100,8 +100,8 @@ const ProductShowcase = () => {
                                 </div>
                             </div>
 
-                            <div className="relative order-1 md:order-2 w-full flex justify-center">
-                                <div className="aspect-[1/1] sm:aspect-[4/5] w-full max-w-[320px] sm:max-w-[400px] bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
+                            <div className="relative order-1 md:order-2 w-full flex justify-center py-4 md:py-0">
+                                <div className="aspect-square sm:aspect-[4/5] w-full max-w-[280px] sx:max-w-[320px] sm:max-w-[400px] bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
                                     <img
                                         src={product.image}
                                         className="w-full h-full object-cover transition-all duration-1000 ease-out md:group-hover:scale-110 md:group-hover:rotate-1"
