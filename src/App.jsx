@@ -14,10 +14,10 @@ import { useImagePreloader } from './hooks/useImagePreloader'
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger)
 
-// Generate paths for frames 001 to 091
+// Generate paths for frames 001 to 088
 const generateFramePaths = () => {
-  return Array.from({ length: 91 }, (_, i) =>
-    `/frame-sequence/ezgif-frame-${(i + 1).toString().padStart(3, '0')}.jpg`
+  return Array.from({ length: 88 }, (_, i) =>
+    `/mandi-transparent/ezgif-frame-${(i + 1).toString().padStart(3, '0')}.jpg`
   )
 }
 

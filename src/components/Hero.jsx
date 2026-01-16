@@ -55,7 +55,7 @@ export default function Hero({ images }) {
                     rh = ch
                 }
                 // Apply zoom factor to make the mandi more prominent
-                const zoomFactor = 0.75
+                const zoomFactor = 0.90
                 rw *= zoomFactor
                 rh *= zoomFactor
             }
@@ -157,9 +157,6 @@ export default function Hero({ images }) {
                     </div>
                 </div>
             </div>
-
-            {/* Subtle Gradient Overlays */}
-            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none" />
         </section>
     )
 }
