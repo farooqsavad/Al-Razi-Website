@@ -47,15 +47,15 @@ export default function Story() {
 
             paragraphs.forEach((p) => {
                 gsap.fromTo(p,
-                    { opacity: window.innerWidth > 768 ? 0.05 : 0.1, y: 30 },
+                    { opacity: window.innerWidth > 768 ? 0.05 : 0.4, y: 30 },
                     {
                         opacity: 1,
                         y: 0,
                         duration: 1.5,
                         scrollTrigger: {
                             trigger: p,
-                            start: 'top 100%',
-                            end: 'top 60%',
+                            start: 'top 90%',
+                            end: 'top 50%',
                             scrub: true,
                         }
                     }

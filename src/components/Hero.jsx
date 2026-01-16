@@ -44,16 +44,20 @@ export default function Hero({ images }) {
                 rh = ch
             }
 
-            // If mobile, we use a custom scaling to ensure the platter is fully visible
+            // Mobile: use cover-style scaling to crop and zoom on the mandi platter
             if (isMobile) {
-                const scale = 0.9
+                // Cover style: fill the canvas completely, cropping as needed
                 if (canvasRatio > imgRatio) {
-                    rh = ch * scale
-                    rw = rh * imgRatio
+                    rw = cw
+                    rh = cw / imgRatio
                 } else {
-                    rw = cw * scale
-                    rh = rw / imgRatio
+                    rw = ch * imgRatio
+                    rh = ch
                 }
+                // Apply zoom factor to make the mandi more prominent
+                const zoomFactor = 1.3
+                rw *= zoomFactor
+                rh *= zoomFactor
             }
 
             const cx = (cw - rw) / 2
