@@ -28,15 +28,15 @@ export default function Story() {
 
             // Horizontal Slide-in for the content container - Disable on mobile to prevent cropping
             gsap.fromTo('.story-content',
-                { x: window.innerWidth > 768 ? '100%' : '0%', opacity: window.innerWidth > 768 ? 1 : 0 },
+                { x: window.innerWidth > 768 ? '100%' : '0%', opacity: window.innerWidth > 768 ? 1 : 0.5 },
                 {
                     x: '0%',
                     opacity: 1,
                     ease: 'power2.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: 'top 80%',
-                        end: 'top top',
+                        start: 'top 95%',
+                        end: 'top 70%',
                         scrub: true,
                         invalidateOnRefresh: true,
                     }
@@ -47,15 +47,15 @@ export default function Story() {
 
             paragraphs.forEach((p) => {
                 gsap.fromTo(p,
-                    { opacity: 0.05, y: 50 },
+                    { opacity: window.innerWidth > 768 ? 0.05 : 0.3, y: 30 },
                     {
                         opacity: 1,
                         y: 0,
                         duration: 1.5,
                         scrollTrigger: {
                             trigger: p,
-                            start: 'top 85%',
-                            end: 'top 40%',
+                            start: 'top 100%',
+                            end: 'top 60%',
                             scrub: true,
                         }
                     }
@@ -91,7 +91,7 @@ export default function Story() {
             </div>
 
             {/* Right Side: Scrollable Narrative */}
-            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[50vh] flex flex-col gap-[40vh] md:gap-[60vh] relative z-10">
+            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[30vh] md:py-[50vh] flex flex-col gap-[30vh] md:gap-[60vh] relative z-10">
                 <div className="story-text max-w-lg">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         It begins with <span className="text-gold-accent">Patience</span>.
