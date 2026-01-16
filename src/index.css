@@ -34,6 +34,8 @@ body {
   min-height: 100vh;
   background-color: #000;
   overflow-x: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Typography refinements */
@@ -61,7 +63,16 @@ h4,
 .text-gradient {
   background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.4) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Mobile Helpers */
+@media (max-width: 768px) {
+  .mobile-optimized-text {
+    word-break: break-word;
+    hyphens: auto;
+  }
 }
 
 /* Lenis recommended styles */

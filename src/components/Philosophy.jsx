@@ -64,7 +64,7 @@ export default function Philosophy() {
 
             <div className="relative z-10 text-center max-w-5xl px-8">
                 <h2 className="perspective-[1000px] overflow-hidden">
-                    <div className="text-6xl md:text-9xl font-bold text-white leading-[0.85] tracking-tight font-display mb-12">
+                    <div className="text-5xl sm:text-7xl md:text-9xl font-bold text-white leading-[0.85] tracking-tight font-display mb-8 md:mb-12">
                         <span className="philo-word inline-block">TASTE</span><br />
                         <span className="philo-word inline-block italic text-gold-accent">THE</span><br />
                         <span className="philo-word inline-block">LEGACY</span>
@@ -72,8 +72,8 @@ export default function Philosophy() {
                 </h2>
 
                 <div className="philo-sub mt-4 max-w-xl mx-auto">
-                    <div className="h-[1px] w-12 bg-gold-accent/40 mx-auto mb-8" />
-                    <p className="text-xl md:text-2xl text-white/60 font-light leading-relaxed">
+                    <div className="h-[1px] w-12 bg-gold-accent/40 mx-auto mb-6 md:mb-8" />
+                    <p className="text-lg sm:text-xl md:text-2xl text-white/60 font-light leading-relaxed px-4">
                         Where ancient nomadic traditions meet the precision of modern culinary mastery.
                     </p>
                 </div>

@@ -126,13 +126,13 @@ export default function Hero({ images }) {
             <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full will-change-transform" />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
-                <div ref={textContainerRef} className="text-center px-4">
-                    <h1 ref={titleRef} className="text-[12vw] md:text-[8rem] font-bold text-white tracking-tighter leading-none mb-4 md:mb-8 font-display will-change-transform will-change-[filter]">
+                <div ref={textContainerRef} className="text-center px-6">
+                    <h1 ref={titleRef} className="text-[18vw] sm:text-[15vw] md:text-[8rem] font-bold text-white tracking-tighter leading-none mb-4 md:mb-8 font-display will-change-transform will-change-[filter]">
                         AL RAZI
                     </h1>
-                    <div ref={subtitleRef} className="flex flex-col items-center gap-4 will-change-transform will-change-[filter]">
-                        <div className="h-[1px] w-32 bg-gold-accent/60" />
-                        <p className="text-gold-accent font-display tracking-[0.5em] text-xs md:text-sm uppercase font-medium">
+                    <div ref={subtitleRef} className="flex flex-col items-center gap-4 sm:gap-6 will-change-transform will-change-[filter]">
+                        <div className="h-[1px] w-20 sm:w-32 bg-gold-accent/60" />
+                        <p className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.5em] text-[10px] sm:text-xs md:text-sm uppercase font-medium">
                             WORLD CLASS MANDI
                         </p>
                     </div>

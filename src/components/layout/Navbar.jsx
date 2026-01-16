@@ -17,7 +17,7 @@ const Navbar = () => {
 
                 {/* Logo */}
                 <a href="#experience" className="group flex flex-col items-start gap-1">
-                    <span className="text-xl md:text-2xl font-display font-bold tracking-[0.3em] text-white group-hover:text-gold-accent transition-colors duration-500">
+                    <span className="text-lg sm:text-xl md:text-2xl font-display font-bold tracking-[0.2em] sm:tracking-[0.3em] text-white group-hover:text-gold-accent transition-colors duration-500">
                         AL RAZI
                     </span>
                     <div className="h-[1px] w-0 group-hover:w-full bg-gold-accent transition-all duration-700 ease-out" />
@@ -27,27 +27,28 @@ const Navbar = () => {
                 <div className="relative">
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="flex items-center gap-6 group"
+                        className="flex items-center gap-4 sm:gap-6 group p-2 -mr-2"
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                     >
                         <span className="text-[10px] uppercase tracking-[0.5em] text-white/60 group-hover:text-gold-accent transition-colors duration-500 hidden md:inline-block">
                             {isMenuOpen ? "Close" : "Explore"}
                         </span>
-                        <div className="flex flex-col gap-1.5 w-8">
-                            <div className={`h-[1px] w-full bg-white transition-transform duration-500 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                        <div className="flex flex-col gap-2 w-7 sm:w-8">
+                            <div className={`h-[1px] w-full bg-white transition-transform duration-500 ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
                             <div className={`h-[1px] w-full bg-white transition-opacity duration-500 ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-                            <div className={`h-[1px] w-full bg-white transition-transform duration-500 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                            <div className={`h-[1px] w-full bg-white transition-transform duration-500 ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
                         </div>
                     </button>
 
                     {/* Expanded Menu Dropdown */}
-                    <div className={`absolute top-full right-0 mt-8 w-64 bg-black/40 backdrop-blur-xl border border-white/10 rounded-sm p-8 transition-all duration-700 ease-cinematic ${isMenuOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}>
-                        <ul className="space-y-6">
+                    <div className={`absolute top-full right-0 mt-6 sm:mt-8 w-56 sm:w-64 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-sm p-6 sm:p-8 transition-all duration-700 ease-cinematic ${isMenuOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95 pointer-events-none'}`}>
+                        <ul className="space-y-5 sm:space-y-6">
                             {navLinks.map((link) => (
                                 <li key={link.name}>
                                     <a
                                         href={link.href}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="block text-[10px] uppercase tracking-[0.4em] text-white/50 hover:text-gold-accent transition-colors duration-300"
+                                        className="block text-[10px] sm:text-[11px] uppercase tracking-[0.4em] text-white/50 hover:text-gold-accent transition-colors duration-300 py-1"
                                     >
                                         {link.name}
                                     </a>
