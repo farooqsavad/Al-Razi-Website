@@ -8,15 +8,13 @@ export default function Story() {
     const sectionRef = useRef(null)
 
     useEffect(() => {
-        const mm = gsap.matchMedia();
-
-        mm.add("(min-width: 768px)", () => {
-            // Desktop behavior: Horizontal slide-in and pinning
+        const ctx = gsap.context(() => {
+            // Horizontal Slide-in for the title container only
             gsap.fromTo('.story-title-container',
                 { x: '100%' },
                 {
                     x: '0%',
-                    ease: 'none',
+                    ease: 'power2.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top bottom',
@@ -27,11 +25,12 @@ export default function Story() {
                 }
             )
 
+            // Horizontal Slide-in for the content container
             gsap.fromTo('.story-content',
                 { x: '100%' },
                 {
                     x: '0%',
-                    ease: 'none',
+                    ease: 'power2.out',
                     scrollTrigger: {
                         trigger: sectionRef.current,
                         start: 'top bottom',
@@ -42,6 +41,26 @@ export default function Story() {
                 }
             )
 
+            const paragraphs = gsap.utils.toArray('.story-text')
+
+            paragraphs.forEach((p) => {
+                gsap.fromTo(p,
+                    { opacity: 0.05, y: 50 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.5,
+                        scrollTrigger: {
+                            trigger: p,
+                            start: 'top 85%',
+                            end: 'top 40%',
+                            scrub: true,
+                        }
+                    }
+                )
+            })
+
+            // Pinning the side heading - pin it after slide-in completes
             ScrollTrigger.create({
                 trigger: sectionRef.current,
                 start: 'top top',
@@ -49,30 +68,10 @@ export default function Story() {
                 pin: '.story-title-container',
                 pinSpacing: false
             })
-        });
 
-        mm.add("(all)", () => {
-            // Common behavior: Fade-in paragraphs
-            const paragraphs = gsap.utils.toArray('.story-text')
-            paragraphs.forEach((p) => {
-                gsap.fromTo(p,
-                    { opacity: 0.05, y: 30 },
-                    {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1.5,
-                        scrollTrigger: {
-                            trigger: p,
-                            start: 'top 90%',
-                            end: 'top 50%',
-                            scrub: true,
-                        }
-                    }
-                )
-            })
-        });
+        }, sectionRef)
 
-        return () => mm.revert()
+        return () => ctx.revert()
     }, [])
 
     return (

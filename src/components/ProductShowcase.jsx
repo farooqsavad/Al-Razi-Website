@@ -36,10 +36,7 @@ const ProductShowcase = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        const mm = gsap.matchMedia();
-
-        mm.add("(min-width: 768px)", () => {
-            // Desktop horizontal scroll
+        const ctx = gsap.context(() => {
             const pin = gsap.to(containerRef.current, {
                 x: () => -(containerRef.current.scrollWidth - window.innerWidth),
                 ease: "none",
@@ -66,35 +63,16 @@ const ProductShowcase = () => {
                     }
                 });
             });
-        });
+        }, sectionRef);
 
-        mm.add("(max-width: 767px)", () => {
-            // Mobile vertical reveal
-            products.forEach((_, i) => {
-                gsap.fromTo(`.item-text-${i}`,
-                    { y: 30, opacity: 0 },
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 1,
-                        scrollTrigger: {
-                            trigger: `.item-trigger-${i}`,
-                            start: "top 80%",
-                            toggleActions: "play none none reverse",
-                        }
-                    }
-                );
-            });
-        });
-
-        return () => mm.revert();
+        return () => ctx.revert();
     }, []);
 
     return (
         <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full">
-            <div ref={containerRef} className="flex flex-col md:flex-row h-auto md:h-screen w-full md:w-max items-center">
+            <div ref={containerRef} className="flex h-screen w-max items-center">
                 {products.map((product, index) => (
-                    <div key={index} className={`min-h-screen md:h-screen w-full md:w-screen flex-shrink-0 relative flex items-center justify-center item-trigger-${index} py-20 md:py-0`}>
+                    <div key={index} className={`h-screen w-screen flex-shrink-0 relative flex items-center justify-center item-trigger-${index}`}>
                         <div className="container mx-auto px-6 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 
                             <div className={`item-text-${index} space-y-4 md:space-y-8 max-w-xl order-2 md:order-1`}>
@@ -123,7 +101,7 @@ const ProductShowcase = () => {
                             </div>
 
                             <div className="relative order-1 md:order-2">
-                                <div className="aspect-[4/3] sm:aspect-[4/5] w-full bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
+                                <div className="aspect-[1/1] sm:aspect-[4/5] w-full max-w-[400px] mx-auto bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
                                     <img
                                         src={product.image}
                                         className="w-full h-full object-cover transition-all duration-1000 ease-out md:group-hover:scale-110 md:group-hover:rotate-1"

@@ -26,20 +26,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  width: 100%;
 }
 
 body {
   margin: 0;
-  width: 100%;
   min-width: 320px;
   min-height: 100vh;
   background-color: #000;
   overflow-x: hidden;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  position: relative;
 }
 
 /* Typography refinements */
