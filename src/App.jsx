@@ -67,7 +67,7 @@ function App() {
             <Navbar />
 
             {/* 1. Sticky Background Layer */}
-            <div className="sticky top-0 h-screen w-full z-0 overflow-hidden">
+            <div className="sticky top-0 h-screen w-full z-0 overflow-hidden pt-16 md:pt-20">
               <Hero images={loadedImages} />
             </div>
 
@@ -75,7 +75,7 @@ function App() {
             <div className="relative z-10 -mt-[100vh] w-full">
               {/* This spacer provides the 'Intro' duration. 
                   Starts at scroll 0 because of the negative margin on parent. */}
-              <div id="hero-trigger" className="h-[150vh] w-full pointer-events-none" />
+              <div id="hero-trigger" className="h-[150vh] w-full pointer-events-none mt-16 md:mt-20" />
 
               <div className="relative bg-black border-t border-white/5 shadow-[0_-50px_100px_rgba(0,0,0,0.5)] w-full overflow-hidden">
                 <Philosophy />

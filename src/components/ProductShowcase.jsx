@@ -73,9 +73,9 @@ const ProductShowcase = () => {
             <div ref={containerRef} className="flex h-screen w-max items-center">
                 {products.map((product, index) => (
                     <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden`}>
-                        <div className="container mx-auto px-6 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
+                        <div className="container mx-auto px-10 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
 
-                            <div className={`item-text-${index} space-y-4 md:space-y-8 max-w-xl order-2 md:order-1`}>
+                            <div className={`item-text-${index} space-y-4 md:space-y-8 max-w-xl order-2 md:order-1 ml-4 md:ml-0`}>
                                 <div className="flex items-center gap-4 text-gold-accent/60">
                                     <span className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] font-display font-medium">{product.tag}</span>
                                     <div className="h-[1px] w-8 md:w-12 bg-gold-accent/30" />

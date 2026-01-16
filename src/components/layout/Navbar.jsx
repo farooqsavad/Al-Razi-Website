@@ -12,8 +12,8 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="fixed top-0 left-0 w-full z-[100] px-6 py-8 md:px-12 md:py-10 pointer-events-none">
-            <div className="max-w-[1800px] mx-auto flex justify-between items-center w-full pointer-events-auto">
+        <nav className="fixed top-0 left-0 w-full z-[100] pointer-events-none">
+            <div className="w-full flex justify-between items-center pointer-events-auto backdrop-blur-xl px-6 py-4 md:px-12 md:py-5">
 
                 {/* Logo */}
                 <a href="#experience" className="group flex flex-col items-start gap-1">

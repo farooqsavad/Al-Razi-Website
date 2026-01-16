@@ -34,6 +34,8 @@ export default function Hero({ images }) {
             const canvasRatio = cw / ch
 
             let rw, rh
+            const isMobile = window.innerWidth <= 768
+
             if (canvasRatio > imgRatio) {
                 rw = cw
                 rh = cw / imgRatio
@@ -42,8 +44,21 @@ export default function Hero({ images }) {
                 rh = ch
             }
 
+            // If mobile, we use a custom scaling to ensure the platter is fully visible
+            if (isMobile) {
+                const scale = 0.9
+                if (canvasRatio > imgRatio) {
+                    rh = ch * scale
+                    rw = rh * imgRatio
+                } else {
+                    rw = cw * scale
+                    rh = rw / imgRatio
+                }
+            }
+
             const cx = (cw - rw) / 2
             const cy = (ch - rh) / 2
+
             contextRef.current.drawImage(img, cx, cy, rw, rh)
         }
 
@@ -125,7 +140,7 @@ export default function Hero({ images }) {
         <section id="experience" ref={sectionRef} className="relative w-full h-full bg-black">
             <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full will-change-transform" />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none pt-16 md:pt-20">
                 <div ref={textContainerRef} className="text-center px-6">
                     <h1 ref={titleRef} className="text-[18vw] sm:text-[15vw] md:text-[8rem] font-bold text-white tracking-tighter leading-none mb-4 md:mb-8 font-display will-change-transform will-change-[filter]">
                         AL RAZI
