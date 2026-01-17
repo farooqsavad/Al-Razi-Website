@@ -12,7 +12,7 @@ export default function Story() {
             const isMobile = window.innerWidth <= 768
 
             if (isMobile) {
-                // Mobile: Simple vertical scroll with no horizontal animations
+                // Mobile: Title animation
                 gsap.fromTo('.story-title-container',
                     { y: 30, opacity: 0 },
                     {
@@ -29,18 +29,40 @@ export default function Story() {
                     }
                 )
 
-                // Mobile: Text items fade in as they scroll into view
+                // Mobile: Horizontal scroll for descriptions
+                const contentScroll = gsap.to('.story-content',
+                    {
+                        x: () => {
+                            const el = document.querySelector('.story-content')
+                            return el ? -(el.scrollWidth - window.innerWidth + 50) : 0
+                        },
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '.story-content',
+                            pin: false,
+                            scrub: 1,
+                            start: 'top 50%',
+                            end: () => {
+                                const el = document.querySelector('.story-content')
+                                return `+=${el ? el.scrollWidth : 0}`
+                            },
+                            invalidateOnRefresh: true,
+                        }
+                    }
+                )
+
+                // Fade in individual text items
                 gsap.utils.toArray('.story-text').forEach((el) => {
                     gsap.fromTo(el,
-                        { opacity: 0.3, y: 30 },
+                        { opacity: 0.3, x: 30 },
                         {
                             opacity: 1,
-                            y: 0,
-                            duration: 0.8,
+                            x: 0,
+                            duration: 0.6,
                             scrollTrigger: {
                                 trigger: el,
-                                start: 'top 80%',
-                                end: 'top 40%',
+                                start: 'left 80%',
+                                end: 'left 30%',
                                 scrub: true,
                             }
                         }
@@ -126,9 +148,9 @@ export default function Story() {
                 </div>
             </div>
 
-            {/* Right Side: Scrollable Narrative */}
-            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[10vh] md:py-[50vh] flex flex-col gap-[15vh] md:gap-[80vh] relative z-10">
-                <div className="story-text max-w-lg">
+            {/* Right Side: Scrollable Narrative - Horizontal on mobile, vertical on desktop */}
+            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[10vh] md:py-[50vh] flex flex-row md:flex-col gap-8 md:gap-[80vh] relative z-10 overflow-x-auto md:overflow-x-visible">
+                <div className="story-text max-w-lg flex-shrink-0 md:flex-shrink-1 min-w-max md:min-w-0">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         It begins with <span className="text-gold-accent">Patience</span>.
                     </p>
@@ -137,7 +159,7 @@ export default function Story() {
                     </p>
                 </div>
 
-                <div className="story-text max-w-lg">
+                <div className="story-text max-w-lg flex-shrink-0 md:flex-shrink-1 min-w-max md:min-w-0">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         The Secret of <span className="text-gold-accent italic">Bukhari</span>.
                     </p>
@@ -146,7 +168,7 @@ export default function Story() {
                     </p>
                 </div>
 
-                <div className="story-text max-w-lg">
+                <div className="story-text max-w-lg flex-shrink-0 md:flex-shrink-1 min-w-max md:min-w-0">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         A Legacy in <span className="text-gold-accent">Gold</span>.
                     </p>
