@@ -38,42 +38,62 @@ const ProductShowcase = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             const isMobile = window.innerWidth <= 768;
-            const pin = gsap.to(containerRef.current, {
-                x: () => -(containerRef.current.scrollWidth - window.innerWidth),
-                ease: "none",
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    pin: !isMobile,
-                    scrub: 1,
-                    start: isMobile ? "top 15%" : "top top",
-                    end: () => `+=${containerRef.current.scrollWidth}`,
-                    invalidateOnRefresh: true,
-                },
-            });
 
-            products.forEach((_, i) => {
-                gsap.from(`.item-text-${i}`, {
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: `.item-trigger-${i}`,
-                        start: "left 60%",
-                        containerAnimation: pin,
-                        toggleActions: "play none none reverse",
-                    }
+            if (isMobile) {
+                // Mobile: Simple vertical scroll with no pinning
+                products.forEach((_, i) => {
+                    gsap.from(`.item-text-${i}`, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 0.8,
+                        scrollTrigger: {
+                            trigger: `.item-trigger-${i}`,
+                            start: "top 80%",
+                            end: "top 50%",
+                            scrub: true,
+                            invalidateOnRefresh: true,
+                        }
+                    });
                 });
-            });
+            } else {
+                // Desktop: Horizontal scroll with pinning
+                const pin = gsap.to(containerRef.current, {
+                    x: () => -(containerRef.current.scrollWidth - window.innerWidth),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        pin: true,
+                        scrub: 1,
+                        start: "top top",
+                        end: () => `+=${containerRef.current.scrollWidth}`,
+                        invalidateOnRefresh: true,
+                    },
+                });
+
+                products.forEach((_, i) => {
+                    gsap.from(`.item-text-${i}`, {
+                        y: 50,
+                        opacity: 0,
+                        duration: 1,
+                        scrollTrigger: {
+                            trigger: `.item-trigger-${i}`,
+                            start: "left 60%",
+                            containerAnimation: pin,
+                            toggleActions: "play none none reverse",
+                        }
+                    });
+                });
+            }
         }, sectionRef);
 
         return () => ctx.revert();
     }, []);
 
     return (
-        <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full pt-24 md:pt-0">
-            <div ref={containerRef} className="flex h-screen w-max items-center pt-24 md:pt-0">
+        <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full">
+            <div ref={containerRef} className="flex h-screen w-max items-center">
                 {products.map((product, index) => (
-                    <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden`}>
+                    <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden pt-32 md:pt-0`}>
                         <div className="container mx-auto px-10 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
 
                             <div className={`item-text-${index} space-y-4 md:space-y-8 max-w-xl order-2 md:order-1 ml-4 md:ml-0`}>
