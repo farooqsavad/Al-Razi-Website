@@ -127,7 +127,7 @@ export default function Story() {
             </div>
 
             {/* Right Side: Scrollable Narrative */}
-            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[10vh] md:py-[50vh] flex flex-col md:flex-nowrap gap-[15vh] md:gap-[60vh] relative z-10">
+            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[10vh] md:py-[50vh] flex flex-col gap-[15vh] md:gap-[80vh] relative z-10">
                 <div className="story-text max-w-lg">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         It begins with <span className="text-gold-accent">Patience</span>.

@@ -90,8 +90,8 @@ const ProductShowcase = () => {
     }, []);
 
     return (
-        <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full md:min-h-[300vh]">
-            <div ref={containerRef} className="flex md:h-screen md:w-max items-center md:sticky md:top-0">
+        <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full">
+            <div ref={containerRef} className="flex h-screen md:w-max items-center">
                 {products.map((product, index) => (
                     <div key={index} className={`h-screen w-full md:w-[100vw] md:flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden pt-28 md:pt-0`}>
                         <div className="container mx-auto px-10 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
