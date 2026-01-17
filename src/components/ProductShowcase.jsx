@@ -37,14 +37,15 @@ const ProductShowcase = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            const isMobile = window.innerWidth <= 768;
             const pin = gsap.to(containerRef.current, {
                 x: () => -(containerRef.current.scrollWidth - window.innerWidth),
                 ease: "none",
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    pin: true,
+                    pin: !isMobile,
                     scrub: 1,
-                    start: "top top",
+                    start: isMobile ? "top 15%" : "top top",
                     end: () => `+=${containerRef.current.scrollWidth}`,
                     invalidateOnRefresh: true,
                 },
@@ -70,7 +71,7 @@ const ProductShowcase = () => {
 
     return (
         <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full pt-24 md:pt-0">
-            <div ref={containerRef} className="flex h-screen w-max items-center">
+            <div ref={containerRef} className="flex h-screen w-max items-center pt-24 md:pt-0">
                 {products.map((product, index) => (
                     <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden`}>
                         <div className="container mx-auto px-10 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">

@@ -12,34 +12,17 @@ export default function Story() {
             const isMobile = window.innerWidth <= 768
 
             if (isMobile) {
-                // Mobile: Title slides in from top, content scrolls horizontally below
+                // Mobile: Title appears when scrolling to section
                 gsap.fromTo('.story-title-container',
-                    { y: '-100%', opacity: 0 },
+                    { opacity: 0, y: 20 },
                     {
-                        y: '0%',
                         opacity: 1,
+                        y: 0,
                         duration: 0.8,
                         ease: 'power2.out',
                         scrollTrigger: {
                             trigger: sectionRef.current,
-                            start: 'top center',
-                            end: 'top top',
-                            scrub: true,
-                            invalidateOnRefresh: true,
-                        }
-                    }
-                )
-
-                // Mobile: Content scrolls horizontally
-                gsap.fromTo('.story-content',
-                    { x: '100%', opacity: 0 },
-                    {
-                        x: '0%',
-                        opacity: 1,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: sectionRef.current,
-                            start: 'top 80%',
+                            start: 'top 70%',
                             end: 'top 40%',
                             scrub: true,
                             invalidateOnRefresh: true,
@@ -47,23 +30,31 @@ export default function Story() {
                     }
                 )
 
-                const paragraphs = gsap.utils.toArray('.story-text')
-                paragraphs.forEach((p) => {
-                    gsap.fromTo(p,
-                        { opacity: 0.5, x: 30 },
-                        {
-                            opacity: 1,
-                            x: 0,
-                            duration: 0.8,
-                            scrollTrigger: {
-                                trigger: p,
-                                start: 'left 80%',
-                                end: 'left 20%',
-                                scrub: true,
-                            }
-                        }
-                    )
+                // Mobile: Pin title at top while content scrolls horizontally
+                ScrollTrigger.create({
+                    trigger: '.story-content',
+                    start: 'top 35vh',
+                    end: 'bottom bottom',
+                    pin: '.story-title-container',
+                    pinSpacing: false,
+                    invalidateOnRefresh: true,
                 })
+
+                // Mobile: Content scrolls horizontally
+                const contentScroll = gsap.to('.story-content',
+                    {
+                        x: () => -(document.querySelector('.story-content').scrollWidth - window.innerWidth + 100),
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '.story-content',
+                            pin: false,
+                            scrub: 1,
+                            start: 'top 35vh',
+                            end: () => `+=${document.querySelector('.story-content').scrollWidth}`,
+                            invalidateOnRefresh: true,
+                        }
+                    }
+                )
             } else {
                 // Desktop: Original behavior
                 gsap.fromTo('.story-title-container',
@@ -132,8 +123,8 @@ export default function Story() {
 
     return (
         <section id="origin" ref={sectionRef} className="relative min-h-screen md:min-h-[300vh] bg-black text-white flex flex-col md:flex-row border-t border-white/5 z-10 overflow-hidden">
-            {/* Title Section - Mobile: Top, Desktop: Left Side Sticky */}
-            <div className="w-full md:w-1/2 md:h-screen flex items-center justify-center story-title-container bg-black z-20 py-12 md:py-0">
+            {/* Title Section - Mobile: Sticky when scrolling, Desktop: Left Side Sticky */}
+            <div className="w-full md:w-1/2 md:h-screen flex items-center justify-center story-title-container bg-black z-20 py-12 md:py-0 md:sticky md:top-0">
                 <div className="text-left px-8 sm:px-12 md:px-24 w-full">
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-4 sm:mb-6 block">Our Origin</span>
                     <h2 className="text-6xl sm:text-7xl md:text-9xl font-bold font-display tracking-tighter leading-none text-white overflow-hidden">
@@ -144,9 +135,9 @@ export default function Story() {
                 </div>
             </div>
 
-            {/* Content Section - Mobile: Scrolls Vertically, Desktop: Scrolls Horizontally */}
-            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[10vh] md:py-[50vh] flex flex-col md:flex-nowrap gap-[15vh] md:gap-[60vh] relative z-10 md:overflow-x-auto md:flex-row">
-                <div className="story-text max-w-lg flex-shrink-0 md:flex-shrink-1">
+            {/* Content Section - Mobile: Horizontal scroll, Desktop: Horizontal scroll with pin */}
+            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-12 md:py-[50vh] flex flex-row gap-8 md:gap-[60vh] relative z-10 overflow-x-auto md:overflow-x-auto">
+                <div className="story-text max-w-lg flex-shrink-0">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         It begins with <span className="text-gold-accent">Patience</span>.
                     </p>
@@ -155,7 +146,7 @@ export default function Story() {
                     </p>
                 </div>
 
-                <div className="story-text max-w-lg flex-shrink-0 md:flex-shrink-1">
+                <div className="story-text max-w-lg flex-shrink-0">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         The Secret of <span className="text-gold-accent italic">Bukhari</span>.
                     </p>
@@ -164,7 +155,7 @@ export default function Story() {
                     </p>
                 </div>
 
-                <div className="story-text max-w-lg flex-shrink-0 md:flex-shrink-1">
+                <div className="story-text max-w-lg flex-shrink-0">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         A Legacy in <span className="text-gold-accent">Gold</span>.
                     </p>
