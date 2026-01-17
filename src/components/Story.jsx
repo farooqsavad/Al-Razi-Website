@@ -165,7 +165,7 @@ export default function Story() {
             {/* Mobile Layout: Pinned title with vertical scrolling descriptions */}
             <div className="md:hidden flex flex-col w-full min-h-[300vh] pt-28">
                 {/* Mobile: Pinned Title (using GSAP ScrollTrigger pin) */}
-                <div className="story-title-mobile w-full bg-black z-20 px-8 sm:px-12 py-6 border-b border-white/5">
+                <div className="story-title-mobile w-full bg-black z-20 px-8 sm:px-12 py-6 border-b border-white/5 pt-20">
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-2 block">Our Origin</span>
                     <h2 className="text-4xl sm:text-5xl font-bold font-display tracking-tighter leading-none text-white overflow-hidden">
                         <span className="block">THE</span>
