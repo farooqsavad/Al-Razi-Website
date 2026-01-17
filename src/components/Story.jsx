@@ -12,9 +12,25 @@ export default function Story() {
             const isMobile = window.innerWidth <= 768
 
             if (isMobile) {
-                // Mobile: Simple fade-in animations for vertical scrolling descriptions in Origin section
+                // Mobile: Pin title using ScrollTrigger and fade-in animations for descriptions
                 const originSection = sectionRef.current
                 if (originSection) {
+                    const titleMobile = originSection.querySelector('.story-title-mobile')
+                    const contentMobile = originSection.querySelector('.story-content-mobile')
+                    
+                    if (titleMobile && contentMobile) {
+                        // Pin title only within Origin section bounds
+                        ScrollTrigger.create({
+                            trigger: contentMobile,
+                            start: 'top top',
+                            end: 'bottom top',
+                            pin: titleMobile,
+                            pinSpacing: false,
+                            invalidateOnRefresh: true,
+                        })
+                    }
+
+                    // Fade-in animations for descriptions
                     gsap.utils.toArray(originSection.querySelectorAll('.story-content-mobile .story-text')).forEach((el) => {
                         gsap.fromTo(el,
                             { opacity: 0, y: 30 },
@@ -146,10 +162,10 @@ export default function Story() {
                 </div>
             </div>
 
-            {/* Mobile Layout: Fixed title with vertical scrolling descriptions */}
+            {/* Mobile Layout: Pinned title with vertical scrolling descriptions */}
             <div className="md:hidden flex flex-col w-full min-h-[300vh] pt-28">
-                {/* Mobile: Fixed Title */}
-                <div className="story-title-mobile fixed top-28 left-0 right-0 w-full bg-black z-30 px-8 sm:px-12 py-6 border-b border-white/5">
+                {/* Mobile: Pinned Title (using GSAP ScrollTrigger pin) */}
+                <div className="story-title-mobile w-full bg-black z-20 px-8 sm:px-12 py-6 border-b border-white/5">
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-2 block">Our Origin</span>
                     <h2 className="text-4xl sm:text-5xl font-bold font-display tracking-tighter leading-none text-white overflow-hidden">
                         <span className="block">THE</span>
@@ -159,7 +175,7 @@ export default function Story() {
                 </div>
 
                 {/* Mobile: Vertical Scrolling Descriptions */}
-                <div className="story-content-mobile w-full flex flex-col gap-16 px-8 sm:px-12 py-12 mt-32">
+                <div className="story-content-mobile w-full flex flex-col gap-16 px-8 sm:px-12 py-12">
                     <div className="story-text w-full">
                         <p className="text-2xl sm:text-3xl font-display font-medium leading-[1.1] mb-4 text-gold-accent">Patience</p>
                         <p className="text-base sm:text-lg text-white/70 leading-relaxed font-light">
