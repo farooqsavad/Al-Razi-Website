@@ -143,10 +143,10 @@ export default function Story() {
                 </div>
             </div>
 
-            {/* Mobile Layout: Sticky title with vertical scrolling descriptions */}
+            {/* Mobile Layout: Fixed title with vertical scrolling descriptions */}
             <div className="md:hidden flex flex-col w-full min-h-[300vh] pt-28">
-                {/* Mobile: Sticky Title */}
-                <div className="story-title-mobile sticky top-28 left-0 right-0 w-full bg-black z-30 px-8 sm:px-12 py-6 border-b border-white/5">
+                {/* Mobile: Fixed Title */}
+                <div className="story-title-mobile fixed top-28 left-0 right-0 w-full bg-black z-30 px-8 sm:px-12 py-6 border-b border-white/5">
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-2 block">Our Origin</span>
                     <h2 className="text-4xl sm:text-5xl font-bold font-display tracking-tighter leading-none text-white overflow-hidden">
                         <span className="block">THE</span>
@@ -156,7 +156,7 @@ export default function Story() {
                 </div>
 
                 {/* Mobile: Vertical Scrolling Descriptions */}
-                <div className="story-content-mobile w-full flex flex-col gap-16 px-8 sm:px-12 py-12">
+                <div className="story-content-mobile w-full flex flex-col gap-16 px-8 sm:px-12 py-12 mt-32">
                     <div className="story-text w-full">
                         <p className="text-2xl sm:text-3xl font-display font-medium leading-[1.1] mb-4 text-gold-accent">Patience</p>
                         <p className="text-base sm:text-lg text-white/70 leading-relaxed font-light">
