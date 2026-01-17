@@ -12,37 +12,18 @@ export default function Story() {
             const isMobile = window.innerWidth <= 768
 
             if (isMobile) {
-                // Mobile: Horizontal scroll animation for descriptions while title stays sticky
-                const contentMobile = document.querySelector('.story-content-mobile')
-                if (contentMobile) {
-                    gsap.to('.story-content-mobile',
-                        {
-                            x: () => -(contentMobile.scrollWidth - window.innerWidth),
-                            ease: 'none',
-                            scrollTrigger: {
-                                trigger: '.story-title-mobile',
-                                pin: true,
-                                scrub: 1,
-                                start: 'top top',
-                                end: () => `+=${contentMobile.scrollWidth}`,
-                                invalidateOnRefresh: true,
-                            }
-                        }
-                    )
-                }
-
-                // Mobile: Fade in individual story texts as they scroll horizontally
+                // Mobile: Simple fade-in animations for vertical scrolling descriptions
                 gsap.utils.toArray('.story-content-mobile .story-text').forEach((el) => {
                     gsap.fromTo(el,
-                        { opacity: 0.3, x: 30 },
+                        { opacity: 0, y: 30 },
                         {
                             opacity: 1,
-                            x: 0,
-                            duration: 0.6,
+                            y: 0,
+                            duration: 0.8,
                             scrollTrigger: {
                                 trigger: el,
-                                start: 'left 80%',
-                                end: 'left 20%',
+                                start: 'top 80%',
+                                end: 'top 20%',
                                 scrub: true,
                                 invalidateOnRefresh: true,
                             }
@@ -163,7 +144,7 @@ export default function Story() {
             </div>
 
             {/* Mobile Layout: Sticky title with vertical scrolling descriptions */}
-            <div className="md:hidden flex flex-col w-full min-h-screen pt-28">
+            <div className="md:hidden flex flex-col w-full min-h-[300vh] pt-28">
                 {/* Mobile: Sticky Title */}
                 <div className="story-title-mobile sticky top-28 left-0 right-0 w-full bg-black z-30 px-8 sm:px-12 py-6 border-b border-white/5">
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-2 block">Our Origin</span>
@@ -174,23 +155,23 @@ export default function Story() {
                     </h2>
                 </div>
 
-                {/* Mobile: Horizontal Scrolling Descriptions */}
-                <div className="story-content-mobile w-full flex flex-row gap-12 px-8 sm:px-12 py-8 overflow-x-auto snap-x snap-mandatory scroll-smooth min-h-[200vh]">
-                    <div className="story-text flex-shrink-0 w-[85vw] sm:w-[400px]">
+                {/* Mobile: Vertical Scrolling Descriptions */}
+                <div className="story-content-mobile w-full flex flex-col gap-16 px-8 sm:px-12 py-12">
+                    <div className="story-text w-full">
                         <p className="text-2xl sm:text-3xl font-display font-medium leading-[1.1] mb-4 text-gold-accent">Patience</p>
                         <p className="text-base sm:text-lg text-white/70 leading-relaxed font-light">
                             True Mandi isn't cooked; it's coaxed into perfection. We honor the ancestral methods where heat, wood, and time harmonize to transform simple ingredients into a royal banquet.
                         </p>
                     </div>
 
-                    <div className="story-text flex-shrink-0 w-[85vw] sm:w-[400px]">
+                    <div className="story-text w-full">
                         <p className="text-2xl sm:text-3xl font-display font-medium leading-[1.1] mb-4 text-gold-accent">Bukhari</p>
                         <p className="text-base sm:text-lg text-white/70 leading-relaxed font-light">
                             Our spices are sourced from lands where the Silk Road once thrived. Each grain of rice is infused with a lineage of flavor that spans across generations and borders.
                         </p>
                     </div>
 
-                    <div className="story-text flex-shrink-0 w-[85vw] sm:w-[400px]">
+                    <div className="story-text w-full">
                         <p className="text-2xl sm:text-3xl font-display font-medium leading-[1.1] mb-4 text-gold-accent">Gold</p>
                         <p className="text-base sm:text-lg text-white/70 leading-relaxed font-light">
                             From the first flicker of the fire to the golden garnish on your plate, Al Razi stands as a testament to the uncompromising pursuit of culinary excellence.
