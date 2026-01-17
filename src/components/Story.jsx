@@ -12,7 +12,7 @@ export default function Story() {
             const isMobile = window.innerWidth <= 768
 
             if (isMobile) {
-                // Mobile: Title animation
+                // Mobile: Simple vertical scroll with no horizontal animations
                 gsap.fromTo('.story-title-container',
                     { y: 30, opacity: 0 },
                     {
@@ -22,53 +22,32 @@ export default function Story() {
                         scrollTrigger: {
                             trigger: sectionRef.current,
                             start: 'top 60%',
-                            end: 'top 30%',
+                            end: 'top 20%',
                             scrub: true,
                             invalidateOnRefresh: true,
                         }
                     }
                 )
 
-                // Mobile: Horizontal scroll for content
-                gsap.to('.story-content',
-                    {
-                        x: () => {
-                            const el = document.querySelector('.story-content')
-                            return el ? -(el.scrollWidth - window.innerWidth + 50) : 0
-                        },
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: '.story-content',
-                            scrub: 1,
-                            start: 'top 45%',
-                            end: () => {
-                                const el = document.querySelector('.story-content')
-                                return `+=${el ? el.scrollWidth : 0}`
-                            },
-                            invalidateOnRefresh: true,
-                        }
-                    }
-                )
-
-                // Fade in individual text items
+                // Mobile: Text items fade in as they scroll into view
                 gsap.utils.toArray('.story-text').forEach((el) => {
                     gsap.fromTo(el,
-                        { opacity: 0.3, x: 30 },
+                        { opacity: 0.3, y: 30 },
                         {
                             opacity: 1,
-                            x: 0,
-                            duration: 0.6,
+                            y: 0,
+                            duration: 0.8,
                             scrollTrigger: {
                                 trigger: el,
-                                start: 'left 80%',
-                                end: 'left 30%',
+                                start: 'top 80%',
+                                end: 'top 40%',
                                 scrub: true,
                             }
                         }
                     )
                 })
             } else {
-                // Desktop: Original behavior
+                // Desktop: Original horizontal behavior
                 gsap.fromTo('.story-title-container',
                     { x: '100%', opacity: 1 },
                     {
@@ -135,7 +114,7 @@ export default function Story() {
 
     return (
         <section id="origin" ref={sectionRef} className="relative min-h-screen md:min-h-[300vh] bg-black text-white flex flex-col md:flex-row border-t border-white/5 z-10 overflow-hidden">
-            {/* Title - Top on mobile, Left sticky on desktop */}
+            {/* Left Side: Sticky Brand Title */}
             <div className="w-full md:w-1/2 md:h-screen flex items-center justify-center story-title-container bg-black z-20 py-16 md:py-0">
                 <div className="text-left px-8 sm:px-12 md:px-24 w-full">
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-4 sm:mb-6 block">Our Origin</span>
@@ -147,9 +126,9 @@ export default function Story() {
                 </div>
             </div>
 
-            {/* Content - Horizontal scroll on both mobile and desktop */}
-            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-12 md:py-[50vh] flex flex-row gap-12 md:gap-[60vh] relative z-10 overflow-x-hidden">
-                <div className="story-text max-w-lg flex-shrink-0 min-w-max md:min-w-0">
+            {/* Right Side: Scrollable Narrative */}
+            <div className="story-content w-full md:w-1/2 px-8 sm:px-12 md:px-24 py-[10vh] md:py-[50vh] flex flex-col md:flex-nowrap gap-[15vh] md:gap-[60vh] relative z-10">
+                <div className="story-text max-w-lg">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         It begins with <span className="text-gold-accent">Patience</span>.
                     </p>
@@ -158,7 +137,7 @@ export default function Story() {
                     </p>
                 </div>
 
-                <div className="story-text max-w-lg flex-shrink-0 min-w-max md:min-w-0">
+                <div className="story-text max-w-lg">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         The Secret of <span className="text-gold-accent italic">Bukhari</span>.
                     </p>
@@ -167,7 +146,7 @@ export default function Story() {
                     </p>
                 </div>
 
-                <div className="story-text max-w-lg flex-shrink-0 min-w-max md:min-w-0">
+                <div className="story-text max-w-lg">
                     <p className="text-3xl sm:text-4xl md:text-6xl font-display font-medium leading-[1.1] mb-6 md:mb-8">
                         A Legacy in <span className="text-gold-accent">Gold</span>.
                     </p>
