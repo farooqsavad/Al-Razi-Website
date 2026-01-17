@@ -134,13 +134,13 @@ const ProductShowcase = () => {
                             </div>
 
                             <div className="relative order-1 md:order-2 w-full flex justify-center pb-8 md:pb-0">
-                                <div className="aspect-square sm:aspect-[4/5] w-full max-w-[280px] sm:max-w-[400px] bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
+                                <div className="aspect-square sm:aspect-[4/5] w-full max-w-[280px] sm:max-w-[400px] bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)] cursor-pointer">
                                     <img
                                         src={product.image}
-                                        className="w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1"
+                                        className="w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1 group-focus:scale-110 group-focus:rotate-1 active:scale-110 active:rotate-1"
                                         alt={product.title}
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 active:opacity-100 transition-opacity duration-700" />
                                 </div>
                             </div>
                         </div>
