@@ -127,3 +127,12 @@ html.lenis body {
 .animate-fade-in {
   animation: fadeIn 1.5s var(--ease-cinematic) forwards;
 }
+
+/* Touch zoom effect for images */
+.group.touched img {
+  transform: scale(1.1) rotate(1deg);
+}
+
+.group.touched .bg-gradient-to-t {
+  opacity: 1 !important;
+}
