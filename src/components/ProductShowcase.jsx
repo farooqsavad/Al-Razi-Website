@@ -105,8 +105,8 @@ const ProductShowcase = () => {
         <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full">
             <div ref={containerRef} className="flex h-screen w-max items-center">
                 {products.map((product, index) => (
-                    <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden pt-28 md:pt-0`}>
-                        <div className="container mx-auto px-10 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
+                    <div key={index} className={`h-screen md:h-auto md:min-h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden pt-28 md:pt-0`}>
+                        <div className="container mx-auto px-10 sm:px-12 md:px-24 grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-20 items-center w-full py-12 md:py-0">
 
                             <div className={`item-text-${index} space-y-4 md:space-y-8 max-w-xl order-2 md:order-1 ml-4 md:ml-0`}>
                                 <div className="flex items-center gap-4 text-gold-accent/60">
@@ -137,10 +137,10 @@ const ProductShowcase = () => {
                                 <div className="aspect-square sm:aspect-[4/5] w-full max-w-[280px] sm:max-w-[400px] bg-white/5 overflow-hidden rounded-sm border border-white/10 group shadow-[0_0_100px_rgba(212,175,55,0.05)]">
                                     <img
                                         src={product.image}
-                                        className="w-full h-full object-cover transition-all duration-1000 ease-out md:group-hover:scale-110 md:group-hover:rotate-1"
+                                        className="w-full h-full object-cover transition-all duration-1000 ease-out group-hover:scale-110 group-hover:rotate-1"
                                         alt={product.title}
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                 </div>
                             </div>
                         </div>
