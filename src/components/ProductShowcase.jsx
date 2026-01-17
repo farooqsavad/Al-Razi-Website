@@ -69,7 +69,7 @@ const ProductShowcase = () => {
     }, []);
 
     return (
-        <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full">
+        <section id="showcase" ref={sectionRef} className="relative overflow-hidden bg-black border-y border-white/5 z-10 w-full pt-24 md:pt-0">
             <div ref={containerRef} className="flex h-screen w-max items-center">
                 {products.map((product, index) => (
                     <div key={index} className={`h-screen w-[100vw] flex-shrink-0 relative flex items-center justify-center item-trigger-${index} overflow-hidden`}>
