@@ -21,9 +21,9 @@ export default function Story() {
                     if (titleMobile && contentMobile) {
                         // Pin title only within Origin section bounds
                         ScrollTrigger.create({
-                            trigger: contentMobile,
+                            trigger: titleMobile,
                             start: 'top top',
-                            end: 'bottom top',
+                            end: () => `+=${contentMobile.scrollHeight}`,
                             pin: titleMobile,
                             pinSpacing: false,
                             invalidateOnRefresh: true,
