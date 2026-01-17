@@ -12,24 +12,27 @@ export default function Story() {
             const isMobile = window.innerWidth <= 768
 
             if (isMobile) {
-                // Mobile: Simple fade-in animations for vertical scrolling descriptions
-                gsap.utils.toArray('.story-content-mobile .story-text').forEach((el) => {
-                    gsap.fromTo(el,
-                        { opacity: 0, y: 30 },
-                        {
-                            opacity: 1,
-                            y: 0,
-                            duration: 0.8,
-                            scrollTrigger: {
-                                trigger: el,
-                                start: 'top 80%',
-                                end: 'top 20%',
-                                scrub: true,
-                                invalidateOnRefresh: true,
+                // Mobile: Simple fade-in animations for vertical scrolling descriptions in Origin section
+                const originSection = sectionRef.current
+                if (originSection) {
+                    gsap.utils.toArray(originSection.querySelectorAll('.story-content-mobile .story-text')).forEach((el) => {
+                        gsap.fromTo(el,
+                            { opacity: 0, y: 30 },
+                            {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.8,
+                                scrollTrigger: {
+                                    trigger: el,
+                                    start: 'top 80%',
+                                    end: 'top 20%',
+                                    scrub: true,
+                                    invalidateOnRefresh: true,
+                                }
                             }
-                        }
-                    )
-                })
+                        )
+                    })
+                }
             } else if (!isMobile) {
                 // Desktop: Original horizontal behavior
                 gsap.fromTo('.story-title-container',
