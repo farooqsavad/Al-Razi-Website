@@ -34,30 +34,12 @@ export default function Hero({ images }) {
             const canvasRatio = cw / ch
 
             let rw, rh
-            const isMobile = window.innerWidth <= 768
-
             if (canvasRatio > imgRatio) {
                 rw = cw
                 rh = cw / imgRatio
             } else {
                 rw = ch * imgRatio
                 rh = ch
-            }
-
-            // Mobile: use cover-style scaling to crop and zoom on the mandi platter
-            if (isMobile) {
-                // Cover style: fill the canvas completely, cropping as needed
-                if (canvasRatio > imgRatio) {
-                    rw = cw
-                    rh = cw / imgRatio
-                } else {
-                    rw = ch * imgRatio
-                    rh = ch
-                }
-                // Apply zoom factor to make the mandi more prominent
-                const zoomFactor = 1.00
-                rw *= zoomFactor
-                rh *= zoomFactor
             }
 
             const cx = (cw - rw) / 2
@@ -68,8 +50,15 @@ export default function Hero({ images }) {
 
         const resizeCanvas = () => {
             if (!canvasRef.current) return
-            canvasRef.current.width = window.innerWidth
-            canvasRef.current.height = window.innerHeight
+            const isMobile = window.innerWidth <= 768
+            
+            // On mobile, only resize if width changes significantly to avoid address bar jumps
+            if (isMobile && canvas.width === window.innerWidth && Math.abs(canvas.height - window.innerHeight) < 120) {
+                return
+            }
+
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
             renderFrame()
         }
 
@@ -77,8 +66,14 @@ export default function Hero({ images }) {
         resizeCanvas()
         window.addEventListener('resize', resizeCanvas)
 
-        const ctx = gsap.context(() => {
-            const isMobile = window.innerWidth <= 768;
+        const mm = gsap.matchMedia()
+
+        mm.add({
+            isDesktop: "(min-width: 769px)",
+            isMobile: "(max-width: 768px)"
+        }, (context) => {
+            const { isDesktop } = context.conditions;
+            
             // We use the external #hero-trigger to drive animations
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -127,7 +122,12 @@ export default function Hero({ images }) {
             if (canvasRef.current) {
                 tl.fromTo(canvasRef.current,
                     { scale: 1, filter: 'brightness(1)' },
-                    { scale: isMobile ? 1 : 1.05, filter: 'brightness(0.7)', ease: 'none', duration: 1 },
+                    { 
+                        scale: isDesktop ? 1.05 : 1, 
+                        filter: 'brightness(0.7)', 
+                        ease: 'none', 
+                        duration: 1 
+                    },
                     0
                 )
             }
@@ -137,13 +137,13 @@ export default function Hero({ images }) {
 
         return () => {
             window.removeEventListener('resize', resizeCanvas)
-            ctx.revert()
+            mm.revert()
         }
     }, [images])
 
     return (
         <section id="experience" ref={sectionRef} className="relative w-full h-full bg-black">
-            <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full will-change-transform" />
+            <canvas ref={canvasRef} className="absolute inset-0 block w-full h-full" style={{ touchAction: 'none' }} />
 
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none pt-16 md:pt-20">
                 <div ref={textContainerRef} className="text-center px-6">
