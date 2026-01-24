@@ -40,7 +40,7 @@ export default function Loading({ progress }) {
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white"
         >
             <div className="relative mb-8 text-center" ref={titleRef}>
-                <h2 className="text-xl font-display font-medium tracking-[0.5em] mb-2">AL RAZI</h2>
+                <h2 className="text-xl font-display font-medium tracking-[0.5em] mb-2">AL MIYA</h2>
                 <p className="text-[10px] text-white/30 uppercase tracking-[0.3em]">Establishing Connection...</p>
             </div>
 

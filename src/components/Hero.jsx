@@ -55,7 +55,7 @@ export default function Hero({ images }) {
                     rh = ch
                 }
                 // Apply zoom factor to make the mandi more prominent
-                const zoomFactor = 0.90
+                const zoomFactor = 1.00
                 rw *= zoomFactor
                 rh *= zoomFactor
             }
@@ -103,7 +103,7 @@ export default function Hero({ images }) {
                         letterSpacing: '0.4em',
                         filter: 'blur(80px) brightness(2)',
                         opacity: 0,
-                        scale: 1.15,
+                        scale: 1.00,
                         y: -80,
                         duration: 0.4, // Finishes at 0.42
                         ease: 'power3.inOut'

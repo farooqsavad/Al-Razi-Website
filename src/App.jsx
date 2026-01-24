@@ -85,7 +85,7 @@ function App() {
 
               {/* Footer */}
               <footer className="py-24 bg-black text-center text-gray-600 text-sm relative z-20 border-t border-white/5">
-                <p className="tracking-[0.3em] uppercase opacity-50">&copy; 2026 AL RAZI. CRAFTED WITH FIRE.</p>
+                <p className="tracking-[0.3em] uppercase opacity-50">&copy; 2026 AL MIYA. CRAFTED WITH FIRE.</p>
               </footer>
             </div>
           </div>

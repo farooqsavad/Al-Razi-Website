@@ -125,7 +125,7 @@ export default function Story() {
                         <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-4 sm:mb-6 block">Our Origin</span>
                         <h2 className="text-6xl sm:text-7xl md:text-9xl font-bold font-display tracking-tighter leading-none text-white overflow-hidden">
                             <span className="block translate-y-2">THE</span>
-                            <span className="block text-gold-accent italic translate-y-[-10%]">AL RAZI</span>
+                            <span className="block text-gold-accent italic translate-y-[-10%]">AL MIYA</span>
                             <span className="block translate-y-[-20%]">WAY</span>
                         </h2>
                     </div>
@@ -156,7 +156,7 @@ export default function Story() {
                         A Legacy in <span className="text-gold-accent">Gold</span>.
                     </p>
                     <p className="text-base md:text-lg text-white/70 leading-relaxed font-light">
-                        From the first flicker of the fire to the golden garnish on your plate, Al Razi stands as a testament to the uncompromising pursuit of culinary excellence.
+                        From the first flicker of the fire to the golden garnish on your plate, Al Miya stands as a testament to the uncompromising pursuit of culinary excellence.
                     </p>
                 </div>
                 </div>
@@ -193,7 +193,7 @@ export default function Story() {
                     <div className="story-text w-full">
                         <p className="text-2xl sm:text-3xl font-display font-medium leading-[1.1] mb-4 text-gold-accent">Gold</p>
                         <p className="text-base sm:text-lg text-white/70 leading-relaxed font-light">
-                            From the first flicker of the fire to the golden garnish on your plate, Al Razi stands as a testament to the uncompromising pursuit of culinary excellence.
+                            From the first flicker of the fire to the golden garnish on your plate, Al Miya stands as a testament to the uncompromising pursuit of culinary excellence.
                         </p>
                     </div>
                 </div>
