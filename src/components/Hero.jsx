@@ -78,6 +78,7 @@ export default function Hero({ images }) {
         window.addEventListener('resize', resizeCanvas)
 
         const ctx = gsap.context(() => {
+            const isMobile = window.innerWidth <= 768;
             // We use the external #hero-trigger to drive animations
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -126,7 +127,7 @@ export default function Hero({ images }) {
             if (canvasRef.current) {
                 tl.fromTo(canvasRef.current,
                     { scale: 1, filter: 'brightness(1)' },
-                    { scale: 1.05, filter: 'brightness(0.7)', ease: 'none', duration: 1 },
+                    { scale: isMobile ? 1 : 1.05, filter: 'brightness(0.7)', ease: 'none', duration: 1 },
                     0
                 )
             }
