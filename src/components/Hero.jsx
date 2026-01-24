@@ -147,7 +147,7 @@ export default function Hero({ images }) {
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none pt-16 md:pt-20">
                 <div ref={textContainerRef} className="text-center px-6">
                     <h1 ref={titleRef} className="text-[18vw] sm:text-[15vw] md:text-[8rem] font-bold text-white tracking-tighter leading-none mb-4 md:mb-8 font-display will-change-transform will-change-[filter]">
-                        AL RAZI
+                        AL MIYA
                     </h1>
                     <div ref={subtitleRef} className="flex flex-col items-center gap-4 sm:gap-6 will-change-transform will-change-[filter]">
                         <div className="h-[1px] w-20 sm:w-32 bg-gold-accent/60" />

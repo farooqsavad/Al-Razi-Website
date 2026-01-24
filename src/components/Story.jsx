@@ -169,7 +169,7 @@ export default function Story() {
                     <span className="text-gold-accent font-display tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] mb-2 block">Our Origin</span>
                     <h2 className="text-4xl sm:text-5xl font-bold font-display tracking-tighter leading-none text-white overflow-hidden">
                         <span className="block">THE</span>
-                        <span className="block text-gold-accent italic">AL RAZI</span>
+                        <span className="block text-gold-accent italic">AL MIYA</span>
                         <span className="block">WAY</span>
                     </h2>
                 </div>

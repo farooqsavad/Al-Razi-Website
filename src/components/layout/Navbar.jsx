@@ -18,7 +18,7 @@ const Navbar = () => {
                 {/* Logo */}
                 <a href="#experience" className="group flex flex-col items-start gap-1">
                     <span className="text-lg sm:text-xl md:text-2xl font-display font-bold tracking-[0.2em] sm:tracking-[0.3em] text-white group-hover:text-gold-accent transition-colors duration-500">
-                        AL RAZI
+                        AL MIYA
                     </span>
                     <div className="h-[1px] w-0 group-hover:w-full bg-gold-accent transition-all duration-700 ease-out" />
                 </a>
